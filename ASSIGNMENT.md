@@ -46,7 +46,7 @@ In the web console, deploy PostgreSQL using Software Catalog.
 <img width="1742" height="776" alt="Screenshot 2026-07-02 at 1 13 40 PM" src="https://github.com/user-attachments/assets/1ba0e774-577c-481f-ba74-b2278ce2f48c" />
 
 
-7. **Run the database migratio** from the backend pod (this seeds all
+7. **Run the database migration** from the backend pod (this seeds all
    demo data):
 
 <img width="1838" height="1016" alt="Screenshot 2026-07-02 at 1 14 14 PM" src="https://github.com/user-attachments/assets/e5f2c089-9286-4a65-b8d4-f08657d7fea8" />
@@ -61,6 +61,9 @@ In the web console, deploy PostgreSQL using Software Catalog.
 ## Part 4 — Frontend
 
 1. **+Add → Import from Git** again, with **Context dir** `/frontend`.
+
+<img width="1208" height="846" alt="Screenshot 2026-07-02 at 1 18 40 PM" src="https://github.com/user-attachments/assets/f385fcf4-df2a-494e-8c0e-5a0480803e98" />
+
 2. Name it `frontend`, target port **3000**, and **create a Route** (this is the
    URL your users open).
 3. Tell the frontend where the backend is — the internal Service address:
@@ -68,6 +71,7 @@ In the web console, deploy PostgreSQL using Software Catalog.
    ```bash
    oc set env deployment/frontend BACKEND_API_URL=http://backend:4000
    ```
+   ⚠️ **IMPORTANT:** The service name must match the backend app name, e.g: smart-ai-bank-app
 
 4. Open the route, log in as `ram` / `customer123`, and try the AI chatbox.
    Then log in as `manager` / `manager123` to see the manager view.
